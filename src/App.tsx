@@ -10,12 +10,21 @@ import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import logo from './logo.svg'
+import green from '@material-ui/core/colors/green';
+import Keyboard from './components/Keyboard';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     grow: {
       flexGrow: 1,
-    }
+    },
+    keyboard: {
+      paddingTop: theme.spacing(1),
+      paddingBottom: theme.spacing(3),
+      textAlign: 'center',
+      color: theme.palette.text.secondary,
+      backgroundColor: green[50],
+    },
   }),
 );
 
@@ -32,9 +41,13 @@ const App: React.FC = () => {
         </Toolbar>
       </AppBar>
       <Container fixed>
-        <Paper>
-          <p> TODO: Add some content :)</p>
-        </Paper>
+        <Grid container spacing={3}>
+          <Grid item xs={12}>
+            <Paper className={classes.keyboard}>
+              <Keyboard highlightedKeyId={0} onKeyPress={(k) => console.log("key pressed: " + k)} />
+            </Paper>
+          </Grid>
+        </Grid>
       </Container>
     </div>
   );
