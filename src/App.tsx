@@ -12,11 +12,20 @@ import IconButton from '@material-ui/core/IconButton';
 import logo from './logo.svg'
 import green from '@material-ui/core/colors/green';
 import Keyboard from './components/Keyboard';
+import Notation from './components/Notation';
+import { PianoNote } from './core/PianoNote';
+import { PianoService } from './core/PianoService'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     grow: {
       flexGrow: 1,
+    },
+    notation: {
+      paddingTop: theme.spacing(2),
+      paddingBottom: theme.spacing(2),
+      textAlign: 'center',
+      color: theme.palette.text.secondary,
     },
     keyboard: {
       paddingTop: theme.spacing(1),
@@ -28,9 +37,35 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
+const maxNotes = 32;
+
+const pianoService = new PianoService();
+
 const App: React.FC = () => {
 
   const classes = useStyles();
+
+  const [notes, setNotes] = React.useState<PianoNote[]>([]);
+
+  const handleKeyPress = (keyId: number) => {
+    console.log(keyId);
+    const note = pianoService.getNoteByKeyId(keyId);
+    addNote(note)
+  }
+
+  const addNote = (note: PianoNote) => {
+    if (notes.length === maxNotes) {
+      setNotes([
+        note
+      ])
+    }
+    else {
+      setNotes([
+        ...notes,
+        note
+      ])
+    }
+  }
 
   return (
     <div className={classes.grow}>
@@ -43,8 +78,13 @@ const App: React.FC = () => {
       <Container fixed>
         <Grid container spacing={3}>
           <Grid item xs={12}>
+            <Paper className={classes.notation} elevation={1}>
+              <Notation notes={notes} />
+            </Paper>
+          </Grid>
+          <Grid item xs={12}>
             <Paper className={classes.keyboard}>
-              <Keyboard highlightedKeyId={0} onKeyPress={(k) => console.log("key pressed: " + k)} />
+              <Keyboard highlightedKeyId={0} onKeyPress={handleKeyPress} />
             </Paper>
           </Grid>
         </Grid>
