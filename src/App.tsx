@@ -15,6 +15,7 @@ import Keyboard from './components/Keyboard';
 import Notation from './components/Notation';
 import { PianoNote } from './core/PianoNote';
 import { PianoService } from './core/PianoService'
+import { SoundService } from './core/SoundService'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -40,6 +41,7 @@ const useStyles = makeStyles((theme: Theme) =>
 const maxNotes = 32;
 
 const pianoService = new PianoService();
+const soundService = new SoundService();
 
 const App: React.FC = () => {
 
@@ -50,6 +52,7 @@ const App: React.FC = () => {
   const handleKeyPress = (keyId: number) => {
     console.log(keyId);
     const note = pianoService.getNoteByKeyId(keyId);
+    soundService.playNote(keyId);
     addNote(note)
   }
 
