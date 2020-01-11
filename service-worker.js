@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/piano-relish/precache-manifest.ef431f580fcc8de1adef3daf1298521c.js"
+  "/piano-relish/precache-manifest.35dcca1a55b2fa7909a5e2f38f9fbf7c.js"
 );
 
 self.addEventListener('message', (event) => {
