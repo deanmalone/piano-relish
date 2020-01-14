@@ -56,6 +56,10 @@ const App: React.FC = () => {
     addNote(note)
   }
 
+  const handleClearClick = () => {
+    setNotes([]);
+  }
+
   const addNote = (note: PianoNote) => {
     if (notes.length === maxNotes) {
       setNotes([
@@ -76,6 +80,7 @@ const App: React.FC = () => {
         <Toolbar>
           <img src={logo} alt="Logo" />
           <div className={classes.grow} />
+          <Button color="inherit" onClick={handleClearClick}>Clear</Button>
         </Toolbar>
       </AppBar>
       <Container fixed>
