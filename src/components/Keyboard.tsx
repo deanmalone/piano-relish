@@ -3,43 +3,46 @@ import './Keyboard.css';
 
 type PianoKey = {
   whiteKeyId: number;
+  whiteKeyName?: string;
   blackKeyId?: number;
+  blackKeyName?: string;
+  blackKeyNameAlt?: string;
 }
 
 const pianoKeys: PianoKey[] = [
-  { whiteKeyId: 16 },
-  { whiteKeyId: 18, blackKeyId: 17 },
-  { whiteKeyId: 20, blackKeyId: 19 },
-  { whiteKeyId: 21 },
-  { whiteKeyId: 23, blackKeyId: 22 },
-  { whiteKeyId: 25, blackKeyId: 24 },
-  { whiteKeyId: 27, blackKeyId: 26 },
-  { whiteKeyId: 28 },
-  { whiteKeyId: 30, blackKeyId: 29 },
-  { whiteKeyId: 32, blackKeyId: 31 },
-  { whiteKeyId: 33 },
-  { whiteKeyId: 35, blackKeyId: 34 },
-  { whiteKeyId: 37, blackKeyId: 36 },
-  { whiteKeyId: 39, blackKeyId: 38 },
-  { whiteKeyId: 40 },
-  { whiteKeyId: 42, blackKeyId: 41 },
-  { whiteKeyId: 44, blackKeyId: 43 },
-  { whiteKeyId: 45 },
-  { whiteKeyId: 47, blackKeyId: 46 },
-  { whiteKeyId: 49, blackKeyId: 48 },
-  { whiteKeyId: 51, blackKeyId: 50 },
-  { whiteKeyId: 52 },
-  { whiteKeyId: 54, blackKeyId: 53 },
-  { whiteKeyId: 56, blackKeyId: 55 },
-  { whiteKeyId: 57 },
-  { whiteKeyId: 59, blackKeyId: 58 },
-  { whiteKeyId: 61, blackKeyId: 60 },
-  { whiteKeyId: 63, blackKeyId: 62 },
-  { whiteKeyId: 64 }
+  { whiteKeyId: 16, whiteKeyName: "C" },
+  { whiteKeyId: 18, whiteKeyName: "D", blackKeyId: 17, blackKeyName: "D\u266D", blackKeyNameAlt: "C\u266F" },
+  { whiteKeyId: 20, whiteKeyName: "E", blackKeyId: 19, blackKeyName: "E\u266D", blackKeyNameAlt: "D\u266F" },
+  { whiteKeyId: 21, whiteKeyName: "F" },
+  { whiteKeyId: 23, whiteKeyName: "G", blackKeyId: 22, blackKeyName: "G\u266D", blackKeyNameAlt: "F\u266F" },
+  { whiteKeyId: 25, whiteKeyName: "A", blackKeyId: 24, blackKeyName: "A\u266D", blackKeyNameAlt: "G\u266F" },
+  { whiteKeyId: 27, whiteKeyName: "B", blackKeyId: 26, blackKeyName: "B\u266D", blackKeyNameAlt: "A\u266F" },
+  { whiteKeyId: 28, whiteKeyName: "C" },
+  { whiteKeyId: 30, whiteKeyName: "D", blackKeyId: 29, blackKeyName: "D\u266D", blackKeyNameAlt: "C\u266F" },
+  { whiteKeyId: 32, whiteKeyName: "E", blackKeyId: 31, blackKeyName: "E\u266D", blackKeyNameAlt: "D\u266F" },
+  { whiteKeyId: 33, whiteKeyName: "F" },
+  { whiteKeyId: 35, whiteKeyName: "G", blackKeyId: 34, blackKeyName: "G\u266D", blackKeyNameAlt: "F\u266F" },
+  { whiteKeyId: 37, whiteKeyName: "A", blackKeyId: 36, blackKeyName: "A\u266D", blackKeyNameAlt: "G\u266F" },
+  { whiteKeyId: 39, whiteKeyName: "B", blackKeyId: 38, blackKeyName: "B\u266D", blackKeyNameAlt: "A\u266F" },
+  { whiteKeyId: 40, whiteKeyName: "C" },
+  { whiteKeyId: 42, whiteKeyName: "D", blackKeyId: 41, blackKeyName: "D\u266D", blackKeyNameAlt: "C\u266F" },
+  { whiteKeyId: 44, whiteKeyName: "E", blackKeyId: 43, blackKeyName: "E\u266D", blackKeyNameAlt: "D\u266F" },
+  { whiteKeyId: 45, whiteKeyName: "F" },
+  { whiteKeyId: 47, whiteKeyName: "G", blackKeyId: 46, blackKeyName: "G\u266D", blackKeyNameAlt: "F\u266F" },
+  { whiteKeyId: 49, whiteKeyName: "A", blackKeyId: 48, blackKeyName: "A\u266D", blackKeyNameAlt: "G\u266F" },
+  { whiteKeyId: 51, whiteKeyName: "B", blackKeyId: 50, blackKeyName: "B\u266D", blackKeyNameAlt: "A\u266F" },
+  { whiteKeyId: 52, whiteKeyName: "C" },
+  { whiteKeyId: 54, whiteKeyName: "D", blackKeyId: 53, blackKeyName: "D\u266D", blackKeyNameAlt: "C\u266F" },
+  { whiteKeyId: 56, whiteKeyName: "E", blackKeyId: 55, blackKeyName: "E\u266D", blackKeyNameAlt: "D\u266F" },
+  { whiteKeyId: 57, whiteKeyName: "F" },
+  { whiteKeyId: 59, whiteKeyName: "G", blackKeyId: 58, blackKeyName: "G\u266D", blackKeyNameAlt: "F\u266F" },
+  { whiteKeyId: 61, whiteKeyName: "A", blackKeyId: 60, blackKeyName: "A\u266D", blackKeyNameAlt: "G\u266F" },
+  { whiteKeyId: 63, whiteKeyName: "B", blackKeyId: 62, blackKeyName: "B\u266D", blackKeyNameAlt: "A\u266F" },
+  { whiteKeyId: 64, whiteKeyName: "C" }
 ];
 
 interface IProps {
-  highlightedKeyId: number;
+  showNames: boolean;
   onKeyPress(keyId: number): void;
 };
 
@@ -47,8 +50,11 @@ const Keyboard: React.FC<IProps> = (props) => {
 
   const keys = pianoKeys.map((key) =>
     <li key={key.whiteKeyId}>
-      <div className="anchor" onClick={() => props.onKeyPress(key.whiteKeyId)}></div>
-      {key.blackKeyId && <span onClick={() => props.onKeyPress(key.blackKeyId!)}></span>}
+      <div className="anchor" onClick={() => props.onKeyPress(key.whiteKeyId)}>{props.showNames && key.whiteKeyName}</div>
+      {key.blackKeyId && <span className="blackkey" onClick={() => props.onKeyPress(key.blackKeyId!)}>
+        {props.showNames && <span>{key.blackKeyName}</span>}
+        {props.showNames && <span>{key.blackKeyNameAlt}</span>}
+      </span>}
     </li>
   );
 

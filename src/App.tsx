@@ -9,6 +9,8 @@ import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Switch from '@material-ui/core/Switch';
 import logo from './logo.svg'
 import green from '@material-ui/core/colors/green';
 import Keyboard from './components/Keyboard';
@@ -33,7 +35,6 @@ const useStyles = makeStyles((theme: Theme) =>
       paddingBottom: theme.spacing(3),
       textAlign: 'center',
       color: theme.palette.text.secondary,
-      backgroundColor: green[50],
     },
   }),
 );
@@ -48,6 +49,7 @@ const App: React.FC = () => {
   const classes = useStyles();
 
   const [notes, setNotes] = React.useState<PianoNote[]>([]);
+  const [options, setOptions] = React.useState({ showNames: false });
 
   const handleKeyPress = (keyId: number) => {
     console.log(keyId);
@@ -74,12 +76,27 @@ const App: React.FC = () => {
     }
   }
 
+  const handleOptionsChange = (name: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
+    setOptions({ ...options, [name]: event.target.checked });
+  };
+
   return (
     <div className={classes.grow}>
       <AppBar position="static">
         <Toolbar>
           <img src={logo} alt="Logo" />
           <div className={classes.grow} />
+          <FormControlLabel
+            control={
+              <Switch
+                checked={options.showNames}
+                onChange={handleOptionsChange('showNames')}
+                value="showNames"
+                color="default"
+              />
+            }
+            label="Show Names"
+          />
           <Button color="inherit" onClick={handleClearClick}>Clear</Button>
         </Toolbar>
       </AppBar>
@@ -92,7 +109,7 @@ const App: React.FC = () => {
           </Grid>
           <Grid item xs={12}>
             <Paper className={classes.keyboard}>
-              <Keyboard highlightedKeyId={0} onKeyPress={handleKeyPress} />
+              <Keyboard showNames={options.showNames} onKeyPress={handleKeyPress} />
             </Paper>
           </Grid>
         </Grid>

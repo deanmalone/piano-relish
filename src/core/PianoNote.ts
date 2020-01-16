@@ -3,8 +3,6 @@ export class PianoNote {
   readonly name: string;
   readonly accidental?: string;  // f | s
   readonly fullname: string;
-  color: string;
-  sender?: string; //optional
 
   constructor(readonly keyId: number, readonly noteId: string) {
 
@@ -18,7 +16,6 @@ export class PianoNote {
 
     this.name = noteId[0].toLowerCase();
     this.octave = parseInt(noteId[1]);
-    this.color = "";
 
     let accidentalSymbol = "";
 
