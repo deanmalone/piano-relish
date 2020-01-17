@@ -104,7 +104,7 @@ const App: React.FC = () => {
         <Grid container spacing={3}>
           <Grid item xs={12}>
             <Paper className={classes.notation} elevation={1}>
-              <Notation notes={notes} />
+              <Notation notes={notes} showNames={options.showNames} />
             </Paper>
           </Grid>
           <Grid item xs={12}>

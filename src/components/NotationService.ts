@@ -17,14 +17,15 @@ export class NotationService {
     }
   }
 
-  renderNotation(notes: PianoNote[]): string {
+  renderNotation(notes: PianoNote[], showNames: boolean = false): string {
 
     let trepleNotesXml: string[] = [];
     let bassNotesXml: string[] = [];
 
     for (let i = 0; i < notes.length; i++) {
 
-      let noteXml = `<note xml:id="${i}" dur="4" oct="${notes[i].octave}" pname="${notes[i].name}" ${notes[i].accidental ? 'accid="' + notes[i].accidental + '"' : ''}></note>`;
+      let nameXml = showNames ? `<verse><syl>${notes[i].fullname.toUpperCase()}</syl></verse>` : "";
+      let noteXml = `<note xml:id="${i}" dur="4" oct="${notes[i].octave}" pname="${notes[i].name}" ${notes[i].accidental ? 'accid="' + notes[i].accidental + '"' : ''}>${nameXml}</note>`;
       let restXml = `<rest xml:id="rest-${i}" dur="4" oct="${notes[i].octave}" pname="${notes[i].name}" ${notes[i].accidental ? 'accid="' + notes[i].accidental + '"' : ''}></rest>`;
 
       if (notes[i].octave > 3) {

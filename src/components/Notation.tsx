@@ -5,14 +5,15 @@ import './Notation.css';
 
 
 interface IProps {
-  notes: PianoNote[]
+  notes: PianoNote[],
+  showNames: boolean;
 };
 
 const notationService = new NotationService();
 
 const Notation: React.FC<IProps> = (props) => {
 
-  const svg = notationService.renderNotation(props.notes)
+  const svg = notationService.renderNotation(props.notes, props.showNames)
 
   return (
     <div id="notation" className="container" dangerouslySetInnerHTML={{ __html: svg }} />
