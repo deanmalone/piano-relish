@@ -51,6 +51,10 @@ const App: React.FC = () => {
   const [notes, setNotes] = React.useState<PianoNote[]>([]);
   const [options, setOptions] = React.useState({ showNames: false });
 
+  const handleNoteClick = (noteIndex: number) => {
+    console.log("Clicked note: " + notes[noteIndex].fullname + ", keyId: " + notes[noteIndex].keyId + ", noteId: " + notes[noteIndex].noteId)
+  }
+
   const handleKeyPress = (keyId: number) => {
     console.log(keyId);
     const note = pianoService.getNoteByKeyId(keyId);
@@ -104,7 +108,7 @@ const App: React.FC = () => {
         <Grid container spacing={3}>
           <Grid item xs={12}>
             <Paper className={classes.notation} elevation={1}>
-              <Notation notes={notes} showNames={options.showNames} />
+              <Notation notes={notes} showNames={options.showNames} onNoteClick={handleNoteClick} />
             </Paper>
           </Grid>
           <Grid item xs={12}>
