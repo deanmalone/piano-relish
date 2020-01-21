@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/piano-relish/static/css/main.04776e44.chunk.css",
-    "main.js": "/piano-relish/static/js/main.37f39eb2.chunk.js",
-    "main.js.map": "/piano-relish/static/js/main.37f39eb2.chunk.js.map",
+    "main.css": "/piano-relish/static/css/main.92b97d30.chunk.css",
+    "main.js": "/piano-relish/static/js/main.caf01414.chunk.js",
+    "main.js.map": "/piano-relish/static/js/main.caf01414.chunk.js.map",
     "runtime-main.js": "/piano-relish/static/js/runtime-main.556f9f27.js",
     "runtime-main.js.map": "/piano-relish/static/js/runtime-main.556f9f27.js.map",
-    "static/js/2.90475dd0.chunk.js": "/piano-relish/static/js/2.90475dd0.chunk.js",
-    "static/js/2.90475dd0.chunk.js.map": "/piano-relish/static/js/2.90475dd0.chunk.js.map",
+    "static/js/2.28ca243b.chunk.js": "/piano-relish/static/js/2.28ca243b.chunk.js",
+    "static/js/2.28ca243b.chunk.js.map": "/piano-relish/static/js/2.28ca243b.chunk.js.map",
     "index.html": "/piano-relish/index.html",
-    "precache-manifest.1a095f4044b77faff9030bbeb6f74f37.js": "/piano-relish/precache-manifest.1a095f4044b77faff9030bbeb6f74f37.js",
+    "precache-manifest.5cdc68247a8ac01b300343f0e0268867.js": "/piano-relish/precache-manifest.5cdc68247a8ac01b300343f0e0268867.js",
     "service-worker.js": "/piano-relish/service-worker.js",
-    "static/css/main.04776e44.chunk.css.map": "/piano-relish/static/css/main.04776e44.chunk.css.map",
-    "static/js/2.90475dd0.chunk.js.LICENSE": "/piano-relish/static/js/2.90475dd0.chunk.js.LICENSE",
+    "static/css/main.92b97d30.chunk.css.map": "/piano-relish/static/css/main.92b97d30.chunk.css.map",
+    "static/js/2.28ca243b.chunk.js.LICENSE": "/piano-relish/static/js/2.28ca243b.chunk.js.LICENSE",
     "static/media/logo.svg": "/piano-relish/static/media/logo.7360bcc0.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.556f9f27.js",
-    "static/js/2.90475dd0.chunk.js",
-    "static/css/main.04776e44.chunk.css",
-    "static/js/main.37f39eb2.chunk.js"
+    "static/js/2.28ca243b.chunk.js",
+    "static/css/main.92b97d30.chunk.css",
+    "static/js/main.caf01414.chunk.js"
   ]
 }
