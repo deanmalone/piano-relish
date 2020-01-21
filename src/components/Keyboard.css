@@ -77,9 +77,15 @@ ul#piano li a,ul#piano li div.anchor {
   -webkit-border-radius:0 0 3px 3px;
   -moz-border-radius:0 0 3px 3px;
   border-radius:0 0 3px 3px;
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+      -khtml-user-select: none; /* Konqueror HTML */
+        -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently supported by Chrome, Opera and Firefox */
 }
 
-ul#piano li.middlec a,ul#piano li.middlec div.anchor {
+ul#piano li.middlec a, ul#piano li.middlec div.anchor {
   background: #dddddd;
 }
 
@@ -145,6 +151,12 @@ box-shadow:inset 0px -1px 2px rgba(255,255,255,0.4),0 2px 3px rgba(0,0,0,0.4);
 -webkit-border-radius:0 0 2px 2px;
 -moz-border-radius:0 0 2px 2px;
 border-radius:0 0 2px 2px;
+-webkit-touch-callout: none; /* iOS Safari */
+-webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+        user-select: none; /* Non-prefixed version, currently supported by Chrome, Opera and Firefox */
 }
 
 ul#piano li span.blackkey:active {
